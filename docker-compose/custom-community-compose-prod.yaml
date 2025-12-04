@@ -59,7 +59,7 @@ services:
     volumes:
       - /usr/local/tomcat/alf_data
     extends:
-      file: commons/base-no-proxy
+      file: commons/base-no-proxy.yaml
       service: alfresco
     networks:
       - internal-network
@@ -112,7 +112,7 @@ services:
       alfresco:
         condition: service_healthy
     extends:
-      file: commons/base-no-proxy
+      file: commons/base-no-proxy.yaml
       service: share
     networks:
       - internal-network
@@ -201,7 +201,7 @@ services:
       retries: 3
       start_period: 1s
     extends:
-      file: commons/base-no-proxy
+      file: commons/base-no-proxy.yaml
       service: content-app
     networks:
       - internal-network
@@ -221,7 +221,7 @@ services:
       retries: 3
       start_period: 1s
     extends:
-      file: commons/base-no-proxy
+      file: commons/base-no-proxy.yaml
       service: control-center
     networks:
       - internal-network
@@ -229,7 +229,7 @@ services:
       - default
   # proxy:
   #   extends:
-  #     file: commons/base-no-proxy
+  #     file: commons/base-no-proxy.yaml
   #     service: proxy
 
 networks:
