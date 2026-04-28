@@ -3,7 +3,7 @@ services:
   alfresco:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.alfresco.rule=Host(`alfresco-learning.usyou.cloud`) && PathPrefix(`/`)"
+      - "traefik.http.routers.alfresco.rule=Host(`demo-alfresco.usyou.online`) && PathPrefix(`/`)"
       - "traefik.http.services.alfresco.loadbalancer.server.port=8080"
       - "traefik.http.routers.alfresco.entrypoints=web,websecure"
       - "traefik.http.routers.alfresco.tls=true"
@@ -12,18 +12,18 @@ services:
       - "traefik.http.middlewares.alfresco-root-redirect.redirectregex.replacement=$$0/"
       - "traefik.http.middlewares.alfresco-chain.chain.middlewares=alfresco-root-redirect@docker,limit@docker"
       - "traefik.http.routers.alfresco.middlewares=alfresco-chain@docker"
-      - "traefik.http.routers.solrapideny.rule=Host(`alfresco-learning.usyou.cloud`) && PathRegexp(`^/alfresco/(wc)?s(ervice)?/api/solr/.*$`)"
+      - "traefik.http.routers.solrapideny.rule=Host(`demo-alfresco.usyou.online`) && PathRegexp(`^/alfresco/(wc)?s(ervice)?/api/solr/.*$`)"
       - "traefik.http.routers.solrapideny.entrypoints=web,websecure"
       - "traefik.http.routers.solrapideny.tls=true"
       - "traefik.http.middlewares.acsfakeauth.basicauth.users=fake:"
       - "traefik.http.routers.solrapideny.middlewares=acsfakeauth@docker"
-      - "traefik.http.routers.alfrescomicrometer.rule=Host(`alfresco-learning.usyou.cloud`) && PathRegexp(`^/alfresco/(wc)?s(ervice)?/prometheus`)"
+      - "traefik.http.routers.alfrescomicrometer.rule=Host(`demo-alfresco.usyou.online`) && PathRegexp(`^/alfresco/(wc)?s(ervice)?/prometheus`)"
       - "traefik.http.middlewares.prometheusipfilter.ipallowlist.sourcerange=127.0.0.0/8"
       - "traefik.http.routers.alfrescomicrometer.middlewares=prometheusipfilter@docker"
   share:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.share.rule=Host(`alfresco-learning.usyou.cloud`) && PathPrefix(`/share`)"
+      - "traefik.http.routers.share.rule=Host(`demo-alfresco.usyou.online`) && PathPrefix(`/share`)"
       - "traefik.http.routers.share.entrypoints=web,websecure"
       - "traefik.http.routers.share.tls=true"
       - "traefik.http.services.share.loadbalancer.server.port=8080"
@@ -32,13 +32,13 @@ services:
       - "traefik.http.middlewares.share-root-redirect.redirectregex.replacement=/share/"
       - "traefik.http.middlewares.share-chain.chain.middlewares=share-root-redirect@docker,limit@docker"
       - "traefik.http.routers.share.middlewares=share-chain@docker"
-      - "traefik.http.routers.proxiedsolrapideny.rule=Host(`alfresco-learning.usyou.cloud`) && PathRegexp(`^/share/proxy/alfresco(-(noauth|feed|api))?/api/solr/`)"
+      - "traefik.http.routers.proxiedsolrapideny.rule=Host(`demo-alfresco.usyou.online`) && PathRegexp(`^/share/proxy/alfresco(-(noauth|feed|api))?/api/solr/`)"
       - "traefik.http.middlewares.sharefakeauth.basicauth.users=fake:"
       - "traefik.http.routers.proxiedsolrapideny.middlewares=sharefakeauth@docker"
   digital-workspace:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.adw.rule=Host(`alfresco-learning.usyou.cloud`) && PathPrefix(`/workspace`)"
+      - "traefik.http.routers.adw.rule=Host(`demo-alfresco.usyou.online`) && PathPrefix(`/workspace`)"
       - "traefik.http.routers.adw.entrypoints=web,websecure"
       - "traefik.http.routers.adw.tls=true"
       - "traefik.http.services.digital-workspace.loadbalancer.server.port=8080"
@@ -50,7 +50,7 @@ services:
   content-app:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.aca.rule=Host(`alfresco-learning.usyou.cloud`) && PathPrefix(`/content-app`)"
+      - "traefik.http.routers.aca.rule=Host(`demo-alfresco.usyou.online`) && PathPrefix(`/content-app`)"
       - "traefik.http.routers.aca.entrypoints=web,websecure"
       - "traefik.http.routers.aca.tls=true"
       - "traefik.http.services.content-app.loadbalancer.server.port=8080"
@@ -62,7 +62,7 @@ services:
   control-center:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.acc.rule=Host(`alfresco-learning.usyou.cloud`) && PathPrefix(`/control-center`) || PathPrefix(`/admin`)"
+      - "traefik.http.routers.acc.rule=Host(`demo-alfresco.usyou.online`) && PathPrefix(`/control-center`) || PathPrefix(`/admin`)"
       - "traefik.http.routers.acc.entrypoints=web,websecure"
       - "traefik.http.routers.acc.tls=true"
       - "traefik.http.services.control-center.loadbalancer.server.port=8080"
@@ -100,7 +100,7 @@ services:
   sync-service:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.syncservice.rule=Host(`alfresco-learning.usyou.cloud`) && PathPrefix(`/syncservice`)"
+      - "traefik.http.routers.syncservice.rule=Host(`demo-alfresco.usyou.online`) && PathPrefix(`/syncservice`)"
       - "traefik.http.services.sync-service.loadbalancer.server.port=9090"
       - "traefik.http.middlewares.syncservice.replacepathregex.regex=^/syncservice/(.*)"
       - "traefik.http.middlewares.syncservice.replacepathregex.replacement=/alfresco/$$1"
