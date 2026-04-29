@@ -24,7 +24,7 @@ services:
   share:
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.share.rule=Host(`demo-share-alfresco.usyou.online`) || ((`demo-alfresco.usyou.online`) && PathPrefix(`/share`))"
+      - "traefik.http.routers.share.rule=Host(`demo-share-alfresco.usyou.online`) || (Host(`demo-alfresco.usyou.online`) && PathPrefix(`/share`))"
       # - "traefik.http.routers.share.rule=Host(`demo-alfresco.usyou.online`) && PathPrefix(`/share`)"
       - "traefik.http.routers.share.entrypoints=web,websecure"
       - "traefik.http.routers.share.tls=true"
