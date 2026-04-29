@@ -234,11 +234,14 @@ services:
   #     file: commons/base-no-proxy.yaml
   #     service: proxy
 
+
 networks:
   default:
     name: custom_community_network
     driver: bridge
   internal-network:
+    name: internal-network
     driver: bridge
   external-network:
+    name: external-network
     external: true
