@@ -242,6 +242,7 @@ networks:
   internal-network:
     name: internal-network
     driver: bridge
+    external: true
   external-network:
     name: external-network
     external: true
